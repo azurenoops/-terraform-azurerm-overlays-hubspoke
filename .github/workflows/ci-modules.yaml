@@ -14,5 +14,5 @@ jobs:
     uses: ./.github/workflows/unit-test.yaml
 
   code-analysis:
-    needs: [documentation]
+    needs: [unit-test]
     uses: ./.github/workflows/code-analysis.yaml
