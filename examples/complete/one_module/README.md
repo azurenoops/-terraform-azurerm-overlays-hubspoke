@@ -1,12 +1,8 @@
-# Azure SCCA compliant Hub/Spoke Virtual Network Terraform Example
+# Azure SCCA compliant Hub/Spoke Virtual Network Terraform with all features Example
 
 This example creates an SCCA-compliant hub/spoke network based on [Microsoft recommended Hub-Spoke network topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). 
 
 If you're deploying the spoke VNet in the same Hub Network subscription, make sure the `is_<spoke>_deployed_to_same_hub_subscription = true` argument is set. This enables the module to manage the network watcher, and traffic analytics for all Virtual Network subnets. Set this argument to 'false' if you are deploying the spoke VNets in separate subscriptions.
-
-This is intended to quickly deploy SCCA compliant hub/spoke architecture in Azure, and additional security hardening by adding appropriate NSG rules is recommended before using this for any production workloads.
-
-## Deployment
 
 ### Module Usage
 

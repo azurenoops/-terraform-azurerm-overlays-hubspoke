@@ -74,9 +74,6 @@ module "hub_spoke_landing_zone" {
   # To deactivate default deny all rule
   hub_deny_all_inbound = false
 
-  # Enable Private Endpoints for Hub
-  # enable_hub_private_endpoints = true
-
   ##############################
   ## Firewall Configuration  ###
   ##############################

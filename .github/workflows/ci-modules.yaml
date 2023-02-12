@@ -1,6 +1,5 @@
 name: Overlays Modules CI
-on: 
-  workflow_call:
+on: push
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
