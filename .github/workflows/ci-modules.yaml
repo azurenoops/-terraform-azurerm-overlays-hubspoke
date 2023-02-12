@@ -10,18 +10,10 @@ jobs:
   lint:
     uses: ./.github/workflows/lint.yaml
 
-  documentation:
+  unit-test:
     needs: [lint, validate]
-    uses: ./.github/workflows/documentation.yaml
+    uses: ./.github/workflows/unit-test.yaml
 
   code-analysis:
     needs: [documentation]
     uses: ./.github/workflows/code-analysis.yaml
-
-  examples:
-    needs: [code-analysis]
-    uses: ./.github/workflows/examples.yaml
-  
-  generator:
-    needs: [examples]
-    uses: ./.github/workflows/generate.yaml
