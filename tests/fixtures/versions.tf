@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-terraform {
+/* terraform {
   required_version = ">= 1.3"
   required_providers {
     azurerm = {
@@ -13,5 +13,5 @@ terraform {
       version = "~> 1.0.4"
     }
   }
-}
+} */
 
