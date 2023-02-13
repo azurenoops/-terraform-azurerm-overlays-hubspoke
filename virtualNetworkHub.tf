@@ -14,10 +14,10 @@ AUTHOR/S: jspinella
 ##################################
 module "mod_hub_network" {
   providers = { azurerm = azurerm.hub }
-   depends_on = [
+  depends_on = [
     module.mod_ops_logging
   ]
-  source    = "./modules/virtual-network-hub"
+  source = "./modules/virtual-network-hub"
 
   // Global Settings
   environment                = var.environment
@@ -91,18 +91,18 @@ module "mod_hub_network" {
   gateway_service_endpoints     = var.gateway_service_endpoints
 
   // Bastion Host
-  enable_bastion_host = var.enable_bastion_host
-  azure_bastion_host_sku = var.azure_bastion_host_sku
+  enable_bastion_host                       = var.enable_bastion_host
+  azure_bastion_host_sku                    = var.azure_bastion_host_sku
   azure_bastion_public_ip_allocation_method = var.azure_bastion_public_ip_allocation_method
-  azure_bastion_subnet_address_prefix = var.azure_bastion_subnet_address_prefix
+  azure_bastion_subnet_address_prefix       = var.azure_bastion_subnet_address_prefix
 
   // Bastion Components
-  enable_copy_paste = var.enable_copy_paste
-  enable_file_copy = var.enable_file_copy
-  enable_ip_connect = var.enable_ip_connect
-  scale_units = var.scale_units
+  enable_copy_paste     = var.enable_copy_paste
+  enable_file_copy      = var.enable_file_copy
+  enable_ip_connect     = var.enable_ip_connect
+  scale_units           = var.scale_units
   enable_shareable_link = var.enable_shareable_link
-  enable_tunneling = var.enable_tunneling
+  enable_tunneling      = var.enable_tunneling
 
   // Locks
   enable_resource_locks = var.enable_resource_locks

@@ -58,7 +58,7 @@ module "mod_svcs_network" {
   nfs_inbound_allowed               = var.svcs_nfs_inbound_allowed
   cifs_inbound_allowed              = var.svcs_cifs_inbound_allowed
 
-   # Spoke Network Security Group additional rules
+  # Spoke Network Security Group additional rules
   nsg_additional_rules = var.svcs_nsg_additional_rules
 
   # Spoke network details to create peering and other setup

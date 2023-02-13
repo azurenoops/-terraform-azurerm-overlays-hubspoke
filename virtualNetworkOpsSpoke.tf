@@ -12,8 +12,8 @@ AUTHOR/S: jspinella
 ### Ops Logging Configuration ###
 #################################
 module "mod_ops_logging" {
-  providers = { azurerm = azurerm.ops }  
-  source = "./modules/operational-logging"
+  providers = { azurerm = azurerm.ops }
+  source    = "./modules/operational-logging"
 
   // Global Settings
   environment                        = var.environment
@@ -35,7 +35,7 @@ module "mod_ops_logging" {
   log_analytics_workspace_sku          = var.log_analytics_workspace_sku
   log_analytics_logs_retention_in_days = var.log_analytics_logs_retention_in_days
 
-   // Defender Settings
+  // Defender Settings
   enable_security_center_setting           = var.enable_security_center_setting
   enable_security_center_auto_provisioning = var.enable_security_center_auto_provisioning
   scope_resource_id                        = var.scope_resource_id
@@ -54,7 +54,7 @@ module "mod_ops_logging" {
 #######################################
 ### Ops Spoke Network Configuration ###
 #######################################
-module "mod_ops_network" {  
+module "mod_ops_network" {
   source = "./modules/virtual-network-spoke"
 
   // Global Settings

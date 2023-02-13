@@ -8,14 +8,14 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.22"
     }
-     azurenoopsutils = {
+    azurenoopsutils = {
       source  = "azurenoops/azurenoopsutils"
       version = "~> 1.0.4"
     }
-     azapi = {
+    azapi = {
       source  = "azure/azapi"
       version = "~> 1.0.0"
-    } 
+    }
   }
 }
 

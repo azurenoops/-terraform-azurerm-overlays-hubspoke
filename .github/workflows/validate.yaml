@@ -12,7 +12,7 @@ jobs:
 
       - name: fmt
         run: |
-          terraform fmt -write=false -diff -check -recursive
+          terraform fmt -write=false -check -recursive
       - name: validate
         run: |
           terraform init 

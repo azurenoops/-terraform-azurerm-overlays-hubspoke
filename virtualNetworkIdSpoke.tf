@@ -58,7 +58,7 @@ module "mod_id_network" {
   nfs_inbound_allowed               = var.id_nfs_inbound_allowed
   cifs_inbound_allowed              = var.id_cifs_inbound_allowed
 
-   # Spoke Network Security Group additional rules
+  # Spoke Network Security Group additional rules
   nsg_additional_rules = var.id_nsg_additional_rules
 
   # Spoke network details to create peering and other setup
