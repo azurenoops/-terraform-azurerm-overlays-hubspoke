@@ -21,13 +21,13 @@ terraform {
 
 provider "azapi" {
   environment     = "usgovernment"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 }
 
 provider "azurerm" {
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {
@@ -46,7 +46,7 @@ provider "azurerm" {
   alias           = "hub"
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {
@@ -65,7 +65,7 @@ provider "azurerm" {
   alias           = "ops"
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {
@@ -84,7 +84,7 @@ provider "azurerm" {
   alias           = "svcs"
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {
@@ -103,7 +103,7 @@ provider "azurerm" {
   alias           = "id"
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {
@@ -122,7 +122,7 @@ provider "azurerm" {
   alias           = "wl"
   environment     = "usgovernment"
   metadata_host   = "management.usgovcloudapi.net"
-  subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  subscription_id = "<<subscription_id>>"
 
   features {
     log_analytics_workspace {

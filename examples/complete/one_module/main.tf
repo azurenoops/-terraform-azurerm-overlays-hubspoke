@@ -41,7 +41,7 @@ module "hub_spoke_landing_zone" {
   #########################
 
   # (Required) Hub Subscription
-  hub_subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  hub_subscription_id = "<<subscription_id>>"
 
   # (Required)  Hub Virtual Network Parameters   
   hub_vnet_address_space = ["10.0.100.0/24"]
@@ -182,7 +182,7 @@ module "hub_spoke_landing_zone" {
   ##################################################
 
   // Operations Subscription
-  ops_subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  ops_subscription_id = "<<subscription_id>>"
 
   # Name for the ops spoke. It defaults to ops-core.
   ops_spoke_name = "ops-core"
@@ -235,7 +235,7 @@ module "hub_spoke_landing_zone" {
   enable_identity_spoke = true
 
    // Identity Subscription
-  id_subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  id_subscription_id = "<<subscription_id>>"
 
   # Name for the Identity spoke. It defaults to ops-core.
   id_spoke_name = "id-core"
@@ -287,7 +287,7 @@ module "hub_spoke_landing_zone" {
   enable_shared_services_spoke = true
 
   // Shared Services Subscription
-  svcs_subscription_id = "964c406a-1019-48d1-a927-9461123de233"
+  svcs_subscription_id = "<<subscription_id>>"
 
   # Name for the ops spoke. It defaults to ops-core.
   svcs_spoke_name = "svcs-core"
