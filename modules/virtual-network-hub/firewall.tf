@@ -75,12 +75,12 @@ resource "azurerm_firewall" "fw" {
   location            = module.mod_hub_rg.0.resource_group_location
   sku_name            = var.firewall_config.sku_name
   sku_tier            = var.firewall_config.sku_tier
-  # firewall_policy_id  = var.firewall_policy != null ? azurerm_firewall_policy.fw-policy.0.id : null
-  dns_servers       = var.firewall_config.dns_servers
-  private_ip_ranges = var.firewall_config.private_ip_ranges
-  threat_intel_mode = lookup(var.firewall_config, "threat_intel_mode", "Alert")
-  zones             = var.firewall_config.zones
-  tags              = merge({ "ResourceName" = format("%s", local.hub_fw_name) }, var.tags, )
+  firewall_policy_id  = azurerm_firewall_policy.firewallpolicy.id
+  dns_servers         = var.firewall_config.dns_servers
+  private_ip_ranges   = var.firewall_config.private_ip_ranges
+  threat_intel_mode   = lookup(var.firewall_config, "threat_intel_mode", "Alert")
+  zones               = var.firewall_config.zones
+  tags                = merge({ "ResourceName" = format("%s", local.hub_fw_name) }, var.tags, )
 
   ip_configuration {
     name                 = lower("${local.hub_fw_name}-ipconfig")
