@@ -26,7 +26,7 @@ locals {
 # No vars should be referenced elsewhere in the module.
 # NOTE: Need to catch error for resource_suffix when
 # no value for subscription_id is provided.
-locals {
+/* locals {
   enabled                                      = var.enabled  
   subscription_id                              = coalesce(var.subscription_id, "00000000-0000-0000-0000-000000000000")
   settings                                     = var.settings
@@ -77,7 +77,7 @@ locals {
   deploy_defender_for_sql_servers    = local.settings.security_center.config.enable_defender_for_sql_servers
   deploy_defender_for_sql_server_vms = local.settings.security_center.config.enable_defender_for_sql_server_vms
   deploy_defender_for_storage        = local.settings.security_center.config.enable_defender_for_storage
-}
+} */
 
 locals {
   # Path: src\terraform\azresources\modules\Microsoft.Security\azureSecurityCenter\main.tf
