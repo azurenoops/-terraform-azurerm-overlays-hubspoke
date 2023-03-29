@@ -12,16 +12,16 @@
 module "mod_operational_logging" {
   providers = { azurerm = azurerm.ops }
   source  = "azurenoops/overlays-hubspoke/azurerm/modules/operational-logging"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
   #####################################
 
-  location           = "usgovvirginia"
+  location           = "eastus"
   deploy_environment = "dev"
   org_name           = "anoa"
-  environment        = "usgovernment"
+  environment        = "public" # Possible values are public, or usgovernment
   workload_name      = "ops-core-logging"
 
   #############################
@@ -36,6 +36,13 @@ module "mod_operational_logging" {
   # Log Retention in days - Possible values range between 30 and 730
   log_analytics_workspace_sku          = "PerGB2018"
   log_analytics_logs_retention_in_days = 30
+
+  ######################################
+  ## Private EndPoint Configuration  ###
+  ######################################
+
+  # (Required) To enable Private Endpoint
+  private_endpoint_subnet_id = module.mod_ops_network.default_subnet_id
 
   ################################
   ## Defender Configuration    ###
@@ -79,16 +86,16 @@ module "mod_hub_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm//modules/virtual-network-hub"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
   #####################################
 
-  location           = "usgovvirginia"
+  location           = "eastus"
   deploy_environment = "dev"
   org_name           = "anoa"
-  environment        = "usgovernment"
+  environment        = "public"
   workload_name      = "hub-core"
 
   ####################################
@@ -144,7 +151,7 @@ module "mod_hub_network" {
   # By default, Azure NoOps will create Azure Firewall in Hub VNet. 
   # If you do not want to create Azure Firewall, 
   # set enable_firewall to false. This will allow different firewall products to be used (Example: F5).  
-  enable_firewall         = true
+  enable_firewall = true
 
   # By default, forced tunneling is enabled for Azure Firewall.
   # If you do not want to enable forced tunneling, 
@@ -256,16 +263,16 @@ module "mod_ops_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm//modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
   #####################################
 
-  location           = "usgovvirginia"
+  location           = "eastus"
   deploy_environment = "dev"
   org_name           = "anoa"
-  environment        = "usgovernment"
+  environment        = "public"
   workload_name      = "ops-core"
 
   ##################################################
@@ -289,7 +296,7 @@ module "mod_ops_network" {
   spoke_private_link_service_network_policies_enabled = true
 
   # Hub Virtual Network ID
-  hub_virtual_network_id = module.mod_hub_network.virtual_network_id
+  hub_virtual_network_id = module.mod_hub_network.hub_virtual_network_id
 
   # Firewall Private IP Address 
   hub_firewall_private_ip_address = module.mod_hub_network.firewall_private_ip
@@ -311,7 +318,7 @@ module "mod_ops_network" {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_ranges    = ["22", "80", "443", "3389"]
-      source_address_prefixes    = ["10.0.120.0/26", "10.0.115.0/26"]
+      source_address_prefixes    = ["10.0.120.0/26", "10.0.125.0/26", "10.0.115.0/26"]
       destination_address_prefix = "10.0.110.0/26"
     },
   ]
@@ -338,16 +345,16 @@ module "mod_id_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm//modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
   #####################################
 
-  location           = "usgovvirginia"
+  location           = "eastus"
   deploy_environment = "dev"
   org_name           = "anoa"
-  environment        = "usgovernment"
+  environment        = "public"
   workload_name      = "id-core"
 
   ################################################
@@ -375,7 +382,7 @@ module "mod_id_network" {
   spoke_private_link_service_network_policies_enabled = true
 
   # Hub Virtual Network ID
-  hub_virtual_network_id = module.mod_hub_network.virtual_network_id
+  hub_virtual_network_id = module.mod_hub_network.hub_virtual_network_id
 
   # Firewall Private IP Address 
   hub_firewall_private_ip_address = module.mod_hub_network.firewall_private_ip
@@ -397,7 +404,7 @@ module "mod_id_network" {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_ranges    = ["22", "80", "443", "3389"]
-      source_address_prefixes    = ["10.0.110.0/26", "10.0.115.0/26"]
+      source_address_prefixes    = ["10.0.110.0/26", "10.0.125.0/26", "10.0.115.0/26"]
       destination_address_prefix = "10.0.120.0/26"
     },
   ]
@@ -424,16 +431,16 @@ module "mod_svcs_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm//modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
   #####################################
 
-  location           = "usgovvirginia"
+  location           = "eastus"
   deploy_environment = "dev"
   org_name           = "anoa"
-  environment        = "usgovernment"
+  environment        = "public"
   workload_name      = "svcs-core"
 
   ########################################################
@@ -461,7 +468,7 @@ module "mod_svcs_network" {
   spoke_private_link_service_network_policies_enabled = true
 
   # Hub Virtual Network ID
-  hub_virtual_network_id = module.mod_hub_network.virtual_network_id
+  hub_virtual_network_id = module.mod_hub_network.hub_virtual_network_id
 
   # Firewall Private IP Address 
   hub_firewall_private_ip_address = module.mod_hub_network.firewall_private_ip
@@ -483,7 +490,7 @@ module "mod_svcs_network" {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_ranges    = ["22", "80", "443", "3389"]
-      source_address_prefixes    = ["10.0.110.0/26", "10.0.120.0/26"]
+      source_address_prefixes    = ["10.0.110.0/26", "10.0.125.0/26", "10.0.120.0/26"]
       destination_address_prefix = "10.0.115.0/26"
     },
   ]
@@ -499,4 +506,3 @@ module "mod_svcs_network" {
   # Tags
   add_tags = {} # Tags to be applied to all resources
 }
-

@@ -11,8 +11,8 @@
 
 module "mod_operational_logging" {
   providers = { azurerm = azurerm.ops }
-  source  = "azurenoops/overlays-hubspoke/azurerm/modules/operational-logging"
-  version = "~> 1.0.0"
+  source  = "azurenoops/overlays-hubspoke/azurerm//modules/operational-logging"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
@@ -85,8 +85,8 @@ module "mod_hub_network" {
   depends_on = [
     module.mod_operational_logging
   ]
-  source  = "azurenoops/overlays-hubspoke/azurerm/modules/virtual-network-hub"
-  version = "~> 1.0.0"
+  source  = "azurenoops/overlays-hubspoke/azurerm//modules/virtual-network-hub"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
@@ -260,7 +260,7 @@ module "mod_hub_network" {
 module "mod_ops_network" {
   providers = { azurerm = azurerm.ops }
   source  = "azurenoops/overlays-hubspoke/azurerm/modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
@@ -342,7 +342,7 @@ module "mod_id_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm/modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
@@ -428,7 +428,7 @@ module "mod_svcs_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm/modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###
@@ -514,7 +514,7 @@ module "mod_wl_network" {
     module.mod_operational_logging
   ]
   source  = "azurenoops/overlays-hubspoke/azurerm/modules/virtual-network-spoke"
-  version = "~> 1.0.0"
+  version = "~> 1.0.5"
 
   #####################################
   ## Global Settings Configuration  ###

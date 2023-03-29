@@ -11,10 +11,6 @@ terraform {
      azurenoopsutils = {
       source  = "azurenoops/azurenoopsutils"
       version = "~> 1.0.4"
-    }
-     azapi = {
-      source  = "azure/azapi"
-      version = "~> 1.0.0"
-    } 
+    }    
   }
 }
