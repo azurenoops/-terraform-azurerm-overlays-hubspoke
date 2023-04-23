@@ -1,6 +1,15 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
+#-------------------------------------
+# Azure Provider Alias for Peering
+#-------------------------------------
+provider "azurerm" {
+  alias           = "hub"
+  subscription_id = element(split("/", var.hub_virtual_network_id), 2)
+  features {}
+}
+
 #-----------------------------------------------
 # Peering between Hub and Spoke Virtual Network
 #-----------------------------------------------
@@ -16,6 +25,7 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
 }
 
 resource "azurerm_virtual_network_peering" "hub_to_spoke" {
+  provider                     = azurerm.hub
   name                         = lower("peering-${element(split("/", var.hub_virtual_network_id), 8)}-to-spoke-${azurerm_virtual_network.spoke_vnet.name}")
   resource_group_name          = element(split("/", var.hub_virtual_network_id), 4)
   virtual_network_name         = element(split("/", var.hub_virtual_network_id), 8)

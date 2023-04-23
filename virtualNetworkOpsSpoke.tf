@@ -55,6 +55,7 @@ module "mod_ops_logging" {
 ### Ops Spoke Network Configuration ###
 #######################################
 module "mod_ops_network" {
+  providers = { azurerm = azurerm.ops }
   source = "./modules/virtual-network-spoke"
 
   // Global Settings
