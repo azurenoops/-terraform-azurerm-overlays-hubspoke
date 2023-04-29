@@ -35,11 +35,11 @@ variable "add_subnets" {
     service_endpoints                          = list(string)
     private_endpoint_network_policies_enabled  = bool
     private_endpoint_service_endpoints_enabled = bool
-    delegation = Optional(map(object({
-      name                       = string
-      service_delegation_name    = string
+    delegation = map(object({
+      name                       = Optional(string)
+      service_delegation_name    = Optional(string)
       service_delegation_actions = Optional(list(string))
-    })))
+    }))
   }))
   default = {}
 }
