@@ -25,4 +25,12 @@ resource "azurerm_subnet" "additional_snets" {
   # Applicable to the subnets which used for Private link endpoints or services 
   private_endpoint_network_policies_enabled     = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   private_link_service_network_policies_enabled = lookup(each.value, "private_link_service_network_policies_enabled", null)
+
+  delegation {
+    name = lookup(each.value, "delegation", null).name
+    service_delegation {
+      name    = lookup(each.value, "delegation", null).service_delegation_name
+      actions = lookup(lookup(each.value, "delegation", null), "service_delegation_actions", null)
+    }
+  }
 }
