@@ -26,11 +26,14 @@ resource "azurerm_subnet" "additional_snets" {
   private_endpoint_network_policies_enabled     = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   private_link_service_network_policies_enabled = lookup(each.value, "private_link_service_network_policies_enabled", null)
 
-  delegation {
-    name = lookup(each.value, "delegation", null).name
-    service_delegation {
-      name    = lookup(each.value, "delegation", null).service_delegation_name
-      actions = lookup(lookup(each.value, "delegation", null), "service_delegation_actions", null)
+  dynamic "delegation" {
+    for_each = lookup(each.value, "delegation", {}) != {} ? [1] : []
+    content {
+      name = lookup(each.value.delegation, "name", null)
+      service_delegation {
+        name    = lookup(each.value.delegation.service_delegation, "service_delegation_name", null)
+        actions = lookup(each.value.delegation.service_delegation, "service_delegation_actions", null)
+      }
     }
   }
 }

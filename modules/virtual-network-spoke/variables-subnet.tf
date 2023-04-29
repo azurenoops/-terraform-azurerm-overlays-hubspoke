@@ -28,20 +28,8 @@ variable "spoke_private_link_service_network_policies_enabled" {
 }
 
 variable "add_subnets" {
-  description = "A list of subnets to add to the spoke"
-  type = map(object({
-    name                                       = string
-    address_prefixes                           = list(string)
-    service_endpoints                          = list(string)
-    private_endpoint_network_policies_enabled  = bool
-    private_endpoint_service_endpoints_enabled = bool
-    delegation = map(object({
-      name                       = optional(string)
-      service_delegation_name    = optional(string)
-      service_delegation_actions = optional(list(string))
-    }))
-  }))
-  default = {}
+  description = "A list of subnets to add to the spoke" 
+  default =  {}
 }
 
 
