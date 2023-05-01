@@ -30,7 +30,7 @@ resource "azurerm_route" "force_internet_tunneling" {
 
 resource "azurerm_route" "route" {
   for_each               = var.route_table_routes
-  name                   = lower("route-to-firewall-${each.value.route_name}-${module.mod_spoke_rg.0.resource_group_location}")
+  name                   = lower("route-to-firewall-${each.value.name}-${module.mod_spoke_rg.0.resource_group_location}")
   resource_group_name    = module.mod_spoke_rg.0.resource_group_name
   route_table_name       = azurerm_route_table.routetable.name
   address_prefix         = each.value.address_prefix
