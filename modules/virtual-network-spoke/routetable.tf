@@ -17,6 +17,12 @@ resource "azurerm_subnet_route_table_association" "rtassoc" {
   route_table_id = azurerm_route_table.routetable.id
 }
 
+resource "azurerm_subnet_route_table_association" "rtaddassoc" {
+  for_each       = var.add_subnets
+  subnet_id      = azurerm_subnet.additional_snets[each.key].id
+  route_table_id = azurerm_route_table.routetable.id
+}
+
 resource "azurerm_route" "force_internet_tunneling" {
   name                   = "InternetForceTunneling"
   resource_group_name    = module.mod_spoke_rg.0.resource_group_name
