@@ -1,3 +1,12 @@
+# IMPORTANT 
+
+> ALERT: This repo will be archived soon. Please use the new modules for creating Hub/Spoke models. 
+> - Management Hub: https://github.com/azurenoops/terraform-azurerm-overlays-management-hub
+> - Management Spoke: https://github.com/azurenoops/terraform-azurerm-overlays-management-spoke
+<BR/>
+<BR/>
+<BR/>
+
 # Azure SCCA Compliant Hub/Spoke Landing Zone Overlay Terraform Module
 
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/azuremoops/terraform-azurerm-overlays-hubspoke/azurerm/)
